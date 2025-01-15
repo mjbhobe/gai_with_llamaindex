@@ -1,0 +1,31 @@
+# python packages needed
+
+pandas
+numpy
+matplotlib
+seaborn
+
+# LLM APIs
+openai
+anthropic
+google-generativeai
+
+# llama_index LLM support
+llama-index
+llama-index-llms-gemini
+llama-index-llms-anthropic
+llama-index-llms-groq
+llama-index-llms-ollama
+llama-index-embeddings-huggingface
+
+# supporting libraries
+python-dotenv
+streamlit
+yfinance
+transformers
+nltk
+requests
+
+black
+psycopg2
+
