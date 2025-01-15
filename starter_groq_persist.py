@@ -1,5 +1,5 @@
 """
-starter_groq.py - starter llamaindex example
+starter_groq.py - starter llamaindex example with open source LLM & embeddings
 
     In this program we will use the Groq API with the llama3-70b-8192 LLM
     and the Jina Embeddings (jina-embeddings-v3) instead of the default OpenAI() model.
@@ -12,6 +12,8 @@ starter_groq.py - starter llamaindex example
     Create an entry JINA_API_KEY=jina_YYYYYY in your .env file, where jina_YYYYY is the key you'll
     create at the link above.
 
+    Here we'll persist our embeddings, so we don't have to create them each time, which saves cost!
+
 Author: Manish Bhobe
 My experiments with Python, ML and Generative AI with llamaindex.
 Code is meant for illustration purposes ONLY. Use at your own risk!
@@ -20,7 +22,12 @@ Author is not liable for any damages arising from direct/indirect use of this co
 
 import os
 from dotenv import find_dotenv, load_dotenv
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+from llama_index.core import (
+    VectorStoreIndex,
+    SimpleDirectoryReader,
+    StorageContext,
+    load_index_from_storage,
+)
 
 # load all API keys from .env file
 # your .env file must have a GROQ_API_KEY entry
@@ -51,11 +58,20 @@ Settings.embed_model = embed_model
 
 # now llamaindex will use our LLM & embedding model
 
-# read all documents in the essay directory
-documents = SimpleDirectoryReader("essay").load_data()
+PERSIST_DIR = "./storage2"
 
-# create in-memory vectors for the documents
-index = VectorStoreIndex.from_documents(documents)
+if not os.path.exists(PERSIST_DIR):
+    # load documents & create index
+    documents = SimpleDirectoryReader("essay").load_data()
+    # create in-memory vectors for the documents
+    index = VectorStoreIndex.from_documents(documents)
+    # and store it for later
+    index.storage_context.persist(persist_dir=PERSIST_DIR)
+    print("Local storage context created!")
+else:
+    print(f"Loading storage context from {PERSIST_DIR}")
+    storage_context = StorageContext.from_defaults(persist_dir=PERSIST_DIR)
+    index = load_index_from_storage(storage_context)
 
 # build a query engine off the index
 query_index = index.as_query_engine()
