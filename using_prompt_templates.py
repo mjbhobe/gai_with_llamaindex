@@ -35,12 +35,6 @@ llm = Groq(
     max_tokens=2048,
 )
 
-# load the presidential address from local folder
-speech_path = pathlib.Path(__file__).parent / "docs" / "trump_inaugural_speech.txt"
-assert speech_path.exists(), f"FATAL: {speech_path} - file does not exist!"
-with open(str(speech_path), "r") as f:
-    speech = f.read()
-
 # my prompt template
 template = (
     "We have provided context information below. \n"
@@ -52,11 +46,22 @@ template = (
 qa_template = PromptTemplate(template)
 
 
+# load the presidential address from local folder - this will provide the
+# context {context_str} in the above prompt
+speech_path = pathlib.Path(__file__).parent / "docs" / "trump_inaugural_speech.txt"
+assert speech_path.exists(), f"FATAL: {speech_path} - file does not exist!"
+with open(str(speech_path), "r") as f:
+    speech = f.read()
+
+
 def get_prompt_response(user_prompt: str, context: str = speech) -> str:
+    """utility function to get response from LLM using a prompt template"""
     # you can create text prompt (for completion API)
     prompt = qa_template.format(context_str=context, query_str=user_prompt)
     # ask llm to respond
     response = llm.complete(prompt)
+    # wrapping text response to TEXT_WIDTH width for convenience
+    # the wrapping is not actually required
     return fill(response.text, width=TEXT_WIDTH)
 
 

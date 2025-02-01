@@ -9,6 +9,8 @@ seaborn
 openai
 anthropic
 google-generativeai
+groq
+duckduckgo-search
 
 # llama_index LLM support
 llama-index
@@ -19,6 +21,9 @@ llama-index-llms-ollama
 llama-index-embeddings-huggingface
 # for Jina embeddings
 llama-index-embeddings-jinaai
+
+# Phidata
+phidata
 
 # supporting libraries
 python-dotenv

@@ -43,7 +43,14 @@ from llama_index.llms.groq import Groq
 from llama_index.embeddings.jinaai import JinaEmbedding
 
 # create the LLM & embeddings
-llm = Groq(model="llama3-70b-8192")
+# llm = Groq(model="llama3-70b-8192")
+llm = Groq(
+    # model="llama3-70b-8192",
+    model="deepseek-r1-distill-llama-70b",
+    # temperature=0.0,
+    # max_tokens=2048,
+)
+# NOTE: your .env file must have a JINAAI_API_KEY entry
 embed_model = JinaEmbedding(
     api_key=os.environ["JINAAI_API_KEY"],
     model="jina-embeddings-v3",

@@ -22,7 +22,8 @@ from llama_index.llms.groq import Groq
 load_dotenv()
 
 llm = Groq(
-    model="llama3-70b-8192",
+    # model="llama3-70b-8192",
+    model="deepseek-r1-distill-llama-70b",
     temperature=0.0,
     max_tokens=2048,
 )
@@ -32,12 +33,12 @@ def get_chat_response(user_message: str, chat_client=llm):
     messages = [
         ChatMessage(
             role="system",
-            content="You are a helpful assistant who response in a calm and friendly tone",
+            content="You are a helpful assistant who responds in a calm and friendly tone",
         ),
         # ChatMessage(role="user", content="Tell me somethings about Sachin Tendulkar"),
         ChatMessage(role="user", content=user_message),
     ]
-    response = llm.chat(messages)
+    response = chat_client.chat(messages)
     return response
 
 
