@@ -11,6 +11,7 @@ anthropic
 google-generativeai
 groq
 duckduckgo-search
+exa_py
 
 # llama_index LLM support
 llama-index
