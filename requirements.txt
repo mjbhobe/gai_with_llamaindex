@@ -5,6 +5,20 @@ numpy
 matplotlib
 seaborn
 
+# supporting libraries
+python-dotenv
+rich
+streamlit
+yfinance
+transformers
+nltk
+requests
+Pillow
+
+black
+psycopg2
+
+
 # LLM APIs
 openai
 anthropic
@@ -22,19 +36,11 @@ llama-index-llms-ollama
 llama-index-embeddings-huggingface
 # for Jina embeddings
 llama-index-embeddings-jinaai
+# for reading GMail
+llama-index-readers-google
 
 # Phidata
 phidata
 
-# supporting libraries
-python-dotenv
-streamlit
-yfinance
-transformers
-nltk
-requests
-Pillow
 
-black
-psycopg2
 

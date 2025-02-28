@@ -25,7 +25,8 @@ load_dotenv()
 # for list of available LLMs visit https://console.groq.com/playground and look
 # for list of models in the dropdown to select model
 llm = Groq(
-    model="llama3-70b-8192",
+    # model="llama3-70b-8192",
+    model="deepseek-r1-distill-llama-70b",
     temperature=0.0,
     max_tokens=2048,
 )

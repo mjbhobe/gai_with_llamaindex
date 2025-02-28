@@ -43,10 +43,10 @@ Deepseek-R1/Groq (does not work!)
 finance_agent = Agent(
     name="Finance Agent",
     # model=Groq(model="llama-3.3-70b-versatile", temperature=0.0, max_tokens=2043),
-    model=Groq(id="deepseek-r1-distill-llama-70b", temperature=0.0, max_tokens=2043),
+    # model=Groq(id="deepseek-r1-distill-llama-70b", temperature=0.0, max_tokens=2043),
     # model=OpenAIChat(id="gpt-4o",temperature=0.0, max_tokens=2043),
     # model=Gemini(id="gemini-1.5-flash", show_tool_calls=True),
-    # model=Claude(id="claude-3-5-sonnet-20240620", temperature=0.0, max_tokens=2043),
+    model=Claude(id="claude-3-5-sonnet-20240620", temperature=0.0, max_tokens=2043),
     tools=[
         YFinanceTools(
             stock_price=True,
