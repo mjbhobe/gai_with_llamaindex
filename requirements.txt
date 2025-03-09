@@ -22,7 +22,7 @@ psycopg2
 # LLM APIs
 openai
 anthropic
-google-generativeai
+google-generativeai>=0.3.0
 groq
 duckduckgo-search
 exa_py
@@ -38,6 +38,10 @@ llama-index-embeddings-huggingface
 llama-index-embeddings-jinaai
 # for reading GMail
 llama-index-readers-google
+# to access Finance info from Yahoo! Finance
+llama-index-tools-yahoo-finance
+# for web search using Tavily search
+llama-index-tools-tavily-research
 
 # Phidata
 phidata

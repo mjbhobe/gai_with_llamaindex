@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# all trial files should be ignored
+trial*.*
+
 # C extensions
 *.so
 
