@@ -78,7 +78,7 @@ async def main():
         \n
         What are the analysts saying about the stock's performance
         \n
-        What is the latest news about Pidilite Industries.
+        Fetch me the latest 10 headlines about Pidilite and always show your sources.
     """
     response = await workflow.run(user_msg=user_prompt)
     print(response)
